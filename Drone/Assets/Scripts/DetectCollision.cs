@@ -7,12 +7,18 @@ public class DetectCollision : MonoBehaviour
     public GameMngr GameMngr_Script;
     float half_Of_playZone;
     public GameObject playZone;
+    public Sound Sound_Script;
+
+public Sound sound_obj;
+  
 
     // Start is called before the first frame update
     void Start()
     {
         playZone = GameObject.Find("PlayZone");
+        Sound_Script = GameObject.Find("Sound").GetComponent<Sound>();
         GameMngr_Script = GameObject.Find("GameMngr").GetComponent<GameMngr>();
+         
     }
 
     // Update is called once per frame
@@ -29,8 +35,8 @@ public class DetectCollision : MonoBehaviour
         if (isColliding) return;
         isColliding = true;
         //https://answers.unity.com/questions/738991/ontriggerenter-being-called-multiple-times-in-succ.html
-
-
+        
+        Sound_Script.hit_Zone();
         Destroy(gameObject);                                            // destry item when collected
 
         if (gameObject.CompareTag("Point_Item"))                        // adding value of item (*subject to change)
@@ -41,6 +47,8 @@ public class DetectCollision : MonoBehaviour
 
         if (gameObject.CompareTag("Speed_Item"))
         { GameMngr_Script.score += 15; }
+
+        
     }
 
     void destroy_FN()

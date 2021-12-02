@@ -6,13 +6,16 @@ using TMPro;
 public class GameMngr : MonoBehaviour
 {
 
-   
+    public ParticleSystem playZoneTouch;
     public GameObject game_Over;
     public static GameObject playZone;
     public static bool alive;
     public int score, time, health;
     public static int TopScore = 299;
     public bool timeToPlay = false;
+
+    private AudioSource audioSource;
+    public AudioClip hit_Zone_Electric;
 
     public bool survived = false;
 
@@ -25,38 +28,45 @@ public class GameMngr : MonoBehaviour
     void Start()
     {
         playZone = GameObject.Find("PlayZone");
-                                                     // initial settings
+        // initial settings
         current_Time = (int)countDown_Time;
         alive = true;
         score = 0;
         time = 0;
         health = 100;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (alive && timeToPlay) { time = (((int)playZone.transform.localScale.x / 10) - 3); } // calculate time to end of zone shrink
-        if(survived){ game_Over.gameObject.SetActive(true);}                                   //end of game screen when survived 
-       
+        if (survived) { game_Over.gameObject.SetActive(true); }                                   //end of game screen when survived 
+
         isTimeTo_Play();
     }
 
     public void deduct_Health()                                     // do damage when hitint zone border
     {
-        if(!SceneManager.GetActiveScene().name.Equals("FreeRun") ) // no damage in practice mode
+        if (!SceneManager.GetActiveScene().name.Equals("FreeRun")) // no damage in practice mode
         {
-            if (health > 5 ) { health -= 5; }
-                else
-                {
-                    health = 0;
-                    gameOver();
-                    alive = false;
-                }
+            if (health > 5)
+            {
+                health -= 5;
+                playZoneTouch.Play();
+                audioSource.PlayOneShot(hit_Zone_Electric, 1.0f);
             }
+            else
+            {
+                health = 0;
+                gameOver();
+                alive = false;
+            }
+        }
     }
 
-                                                                        // scene manage functions
+    // scene manage functions
     public void gameOver() { game_Over.gameObject.SetActive(true); }
     public void MainMenu_Scene() { SceneManager.LoadScene(0); }
     public void cube_Scene() { SceneManager.LoadScene(1); }
@@ -73,7 +83,7 @@ public class GameMngr : MonoBehaviour
 
         current_Time -= 1 * Time.deltaTime;
         timeToPlay = current_Time < 0 ? true : false;
-                                                                    // TODO poorly written countDown code, must be replaced
+        // TODO poorly written countDown code, must be replaced
     }
 
 }
