@@ -8,7 +8,10 @@ public class DetectCollision : MonoBehaviour
     float half_Of_playZone;
     public GameObject playZone;
     public Sound Sound_Script;
+    public GameObject flame;
 
+ 
+    
 public Sound sound_obj;
   
 
@@ -18,11 +21,14 @@ public Sound sound_obj;
         playZone = GameObject.Find("PlayZone");
         Sound_Script = GameObject.Find("Sound").GetComponent<Sound>();
         GameMngr_Script = GameObject.Find("GameMngr").GetComponent<GameMngr>();
+
+       
+    
          
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         isColliding = false;
         half_Of_playZone = playZone.transform.localScale.x / 2;   // get half of playzone (on x axis)
@@ -47,6 +53,9 @@ public Sound sound_obj;
 
         if (gameObject.CompareTag("Speed_Item"))
         { GameMngr_Script.score += 15; }
+
+       if (gameObject.CompareTag("PowerUp_Flame"))
+        {flame.SetActive(true); }
 
         
     }

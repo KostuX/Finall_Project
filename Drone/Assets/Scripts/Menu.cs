@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour
     {
         GameMngr.alive = true;
         SceneManager.LoadScene(scene);
+        Time.timeScale = 1f;
     }
                                                             // overloaded start function for in game menu (back to main)
     public static void start(string scene_temp) { Time.timeScale = 1f; SceneManager.LoadScene(scene_temp); }
@@ -52,6 +53,10 @@ public class Menu : MonoBehaviour
                                                                                                         // Links
     public void link_GitHub() { Application.OpenURL("https://github.com/Kostas9999/IMM_Project_Alpha"); }
     public void link_WebGL() { Application.OpenURL("https://kostas9999.github.io/IMM_Project_Alpha/"); }
+
+
+
+
 
 }
 

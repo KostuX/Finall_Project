@@ -14,6 +14,8 @@ public class GameMngr : MonoBehaviour
     public static int TopScore = 299;
     public bool timeToPlay = false;
 
+ 
+
     private AudioSource audioSource;
     public AudioClip hit_Zone_Electric;
 
@@ -53,7 +55,7 @@ public class GameMngr : MonoBehaviour
         {
             if (health > 5)
             {
-                health -= 5;
+             if(alive && !survived)  { health -= 5;}
                 playZoneTouch.Play();
                 audioSource.PlayOneShot(hit_Zone_Electric, 1.0f);
             }
@@ -62,6 +64,7 @@ public class GameMngr : MonoBehaviour
                 health = 0;
                 gameOver();
                 alive = false;
+               
             }
         }
     }
@@ -85,5 +88,7 @@ public class GameMngr : MonoBehaviour
         timeToPlay = current_Time < 0 ? true : false;
         // TODO poorly written countDown code, must be replaced
     }
+
+   
 
 }

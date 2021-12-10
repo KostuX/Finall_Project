@@ -4,6 +4,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     public GameObject[] checkPoints;
+     public GameObject[] powerUp;
     public GameObject playZone;
 
     // Start is called before the first frame update
@@ -11,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     {
       
         InvokeRepeating("randomSpawn", 2, 1f);
+        InvokeRepeating("powrUpSpawn", 10, 1f);
 
         for (int i = 0; i < 10; i++) { randomSpawn(); }         // drop-in some items when started
     }
@@ -19,11 +21,13 @@ public class SpawnManager : MonoBehaviour
     void randomSpawn()                                              // random spawn function
     {
         int i = ((int)playZone.transform.localScale.x / 2) - 10;   // get spawn range to spawn items in zone only
-
-        int checkPointIndex = Random.Range(0, 3);
         int randomX = Random.Range(-i, i);
+
+
         int randomY = Random.Range(-i, i);
         int randomZ = Random.Range(-i, i);
+        int checkPointIndex = Random.Range(0, checkPoints.Length);
+       
 
         Instantiate(                                                // create item at random location whithin zone
                     checkPoints[checkPointIndex], 
@@ -33,7 +37,25 @@ public class SpawnManager : MonoBehaviour
     }
 
 
+void powrUpSpawn()
+{
+        int i = ((int)playZone.transform.localScale.x / 2) - 10;   // get spawn range to spawn items in zone only
+        int randomX = Random.Range(-i, i);
 
+
+        int randomY = Random.Range(-i, i);
+        int randomZ = Random.Range(-i, i);
+        int powerUpIndex = Random.Range(0, powerUp.Length);
+       
+
+        Instantiate(                                                // create item at random location whithin zone
+                    powerUp[powerUpIndex], 
+                    new Vector3(randomX, randomY, randomZ), 
+                    powerUp[powerUpIndex].transform.rotation
+                    );
+
+
+}
 
 
 

@@ -8,6 +8,7 @@ TagManager:
   - Time_Item
   - Speed_Item
   - Drone_OBJ
+  - PowerUp_Flame
   layers:
   - Default
   - TransparentFX

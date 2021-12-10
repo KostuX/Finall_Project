@@ -17,4 +17,20 @@ public class Menu_RotateDrone : MonoBehaviour
            drone_RB.AddRelativeTorque(transform.forward * 0.005f);
            drone_RB.AddRelativeTorque(transform.up * 0.001f);
     }
+
+
+    
+ void OnMouseDrag() {
+     float rotationX = Input.GetAxis("Mouse X") * 2f ;
+     float rotationY = Input.GetAxis("Mouse Y") * 2f;
+
+     transform.Rotate( Vector3.up, -rotationX, Space.World );
+transform.Rotate( Vector3.right, rotationY, Space.World );
+
+//drone_RB.transform.RotateAround(Vector3.up, -rotx);
+//drone_RB.transform.RotateAround(Vector3.right, roty);
+
+
+    
+}
 }
