@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI Cube_Top_Score;
     public GameObject FreeRun_Description;
 
-    string scene = "MainMenu";
+    string scene = "Cube";
 
     public void start()
     {

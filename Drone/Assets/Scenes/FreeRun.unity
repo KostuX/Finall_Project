@@ -1098,6 +1098,7 @@ MonoBehaviour:
   hit_Zone_Electric: {fileID: 8300000, guid: b6b5317eb8b78744aa0634c014faeea1, type: 3}
   survived: 0
   countDown_Text: {fileID: 1545874292}
+  powerUp: {fileID: 0}
 --- !u!4 &576710746
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,6 +1406,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844647303}
     m_Modifications:
+    - target: {fileID: 8845647883740126473, guid: 1cb4649ef2ef1c34da8d2d86f841f0f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1ca3026bdc26d44b50035f18f58186, type: 2}
     - target: {fileID: 8845647883740126474, guid: 1cb4649ef2ef1c34da8d2d86f841f0f6, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -3280,6 +3285,8 @@ MonoBehaviour:
   - {fileID: 6603279934742432242, guid: 01e452469160b824db1644168605ccf3, type: 3}
   - {fileID: 6603279934742432242, guid: 8eaba84452598f642be4b873e2f11bf6, type: 3}
   - {fileID: 6603279934742432242, guid: 86aa70af8c2976d48b36ed625158f0db, type: 3}
+  powerUp:
+  - {fileID: 8306265020755424121, guid: 654d67b06fc806d40af41bccbeb04662, type: 3}
   playZone: {fileID: 2112067859}
 --- !u!4 &1516401669
 Transform:
@@ -4947,6 +4954,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844647303}
     m_Modifications:
+    - target: {fileID: 8845647883740126473, guid: 1cb4649ef2ef1c34da8d2d86f841f0f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c82990ed324c579488b4c81515db400a, type: 2}
     - target: {fileID: 8845647883740126474, guid: 1cb4649ef2ef1c34da8d2d86f841f0f6, type: 3}
       propertyPath: m_IsTrigger
       value: 1

@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public GameObject playZone;
 
 
-    public float speed = 5000f;
+    public float speed = 4000f;
 
     public static bool isPaused;
     public GameObject inGameMenu;
     public GameObject in_Game_Menu_Button;
+
+
 
     float upForce, forwardForce, sideForce, turnSideSpeed;
 
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
             // up / down
             if (Input.GetKey(KeyCode.UpArrow)) { upForce = speed; }
-            else if (Input.GetKey(KeyCode.DownArrow)) { upForce = -3000; }
+            else if (Input.GetKey(KeyCode.DownArrow)) { upForce = -3000; } 
             else { upForce = 98.1f; }
 
             // forward / backward
@@ -85,8 +87,8 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) { sideForce = -speed; }
             else { sideForce = 98.1f; }
 
-            if (Input.GetKey(KeyCode.RightArrow)) { turnSideSpeed = 200; }
-            else if (Input.GetKey(KeyCode.LeftArrow)) { turnSideSpeed = -200; }
+            if (Input.GetKey(KeyCode.RightArrow)) { turnSideSpeed = 100; }
+            else if (Input.GetKey(KeyCode.LeftArrow)) { turnSideSpeed = -100; }
             else { turnSideSpeed = 0; }
 
             //left / right
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        // TODO make movement more realistic by adding forces
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused) { resume(); }

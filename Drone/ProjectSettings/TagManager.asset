@@ -9,6 +9,7 @@ TagManager:
   - Speed_Item
   - Drone_OBJ
   - PowerUp_Flame
+  - PowerUp_Item_Flame
   layers:
   - Default
   - TransparentFX

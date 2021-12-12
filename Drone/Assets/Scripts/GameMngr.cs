@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using TMPro;
 
 
@@ -25,6 +26,7 @@ public class GameMngr : MonoBehaviour
     float countDown_Time = 4;
     public TextMeshProUGUI countDown_Text;
 
+public GameObject powerUp;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,9 @@ public class GameMngr : MonoBehaviour
         health = 100;
 
         audioSource = GetComponent<AudioSource>();
+
+            
+
     }
 
     // Update is called once per frame
@@ -51,6 +56,8 @@ public class GameMngr : MonoBehaviour
 
     public void deduct_Health()                                     // do damage when hitint zone border
     {
+        powerUp.gameObject.SetActive(false);                        //remove powerUp on zone wall touch
+         
         if (!SceneManager.GetActiveScene().name.Equals("FreeRun")) // no damage in practice mode
         {
             if (health > 5)
@@ -63,8 +70,7 @@ public class GameMngr : MonoBehaviour
             {
                 health = 0;
                 gameOver();
-                alive = false;
-               
+                alive = false; 
             }
         }
     }
@@ -89,6 +95,19 @@ public class GameMngr : MonoBehaviour
         // TODO poorly written countDown code, must be replaced
     }
 
+   public void powerUp_Flame()
+   {
+       powerUp.gameObject.SetActive(true);
+       StartCoroutine(powerUp_Flame_CountDown());
+       }
+
+       IEnumerator powerUp_Flame_CountDown()
+       {
+           yield return new WaitForSeconds(10);
+
+            powerUp.gameObject.SetActive(false);
+
+       }
    
 
 }
