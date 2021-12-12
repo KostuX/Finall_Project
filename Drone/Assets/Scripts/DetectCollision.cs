@@ -29,7 +29,7 @@ public Sound sound_obj;
         destroy_FN();
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //-----------------------------------------------------------------------------------------------
         if (isColliding) return;

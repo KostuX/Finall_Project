@@ -87,8 +87,8 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D)) { sideForce = -speed; }
             else { sideForce = 98.1f; }
 
-            if (Input.GetKey(KeyCode.RightArrow)) { turnSideSpeed = 100; }
-            else if (Input.GetKey(KeyCode.LeftArrow)) { turnSideSpeed = -100; }
+            if (Input.GetKey(KeyCode.RightArrow)) { turnSideSpeed = 200; }
+            else if (Input.GetKey(KeyCode.LeftArrow)) { turnSideSpeed = -200; }
             else { turnSideSpeed = 0; }
 
             //left / right
